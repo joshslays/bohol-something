@@ -18,10 +18,10 @@
           <a class="nav-link" aria-current="page" href="/odix">HOME</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/odix/views/user/login.php">User login</a>
+          <a class="nav-link" aria-current="page" href="/odix/views/user/login.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/odix/views/admin/login.php">Admin login</a>
+          <a class="nav-link" href="/odix/views/user/sign_up.php">Sign up</a>
         </li>
       </ul>
     </section>

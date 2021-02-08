@@ -3,7 +3,7 @@
   include('../header.php');
 ?>
 
-<h1 class='text-center'> Login </h1>
+<h1 class='text-center'> Sign up </h1>
 
 <?php
   include('../shared/login_form.php');
