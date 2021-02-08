@@ -1,5 +1,5 @@
 <?php
-  $errors = ['email' => '', 'password' => ''];
+  $errors = ['email' => '', 'password' => '', 'invalid' => ''];
 
   if (isset($_POST['submit'])) {
     // email field validation
@@ -11,20 +11,63 @@
       }
     }
 
+    // password validation
     if (empty($_POST['password'])) {
       $errors['password'] = 'you must have a password!';
-    } else {
+    } else if ($method !== 'login') {
       // FIXME: feel free to replace this with a regex or something better
       if (strlen($_POST['password']) < 8) {
         $errors['password'] = 'password must not be less than 8 characters';
       }
     }
 
-    // on success
+    // valid form
     if (!array_filter($errors)) {
-      header('Location: /odix');
-    }
+      include('../../db/connection.php');
+      $stmt = '';
 
+      if ($user_type !== 'admin') {
+        // user login
+        $stmt = mysqli_prepare($db_conn, 'SELECT email, password_digest FROM users WHERE email = ? LIMIT 1;');
+      } else {
+        // admin login
+        $stmt = mysqli_prepare($db_conn, 'SELECT email, password_digest FROM admins WHERE email = ? LIMIT 1;');
+      }
+
+      mysqli_stmt_bind_param($stmt, "s", $_POST['email']);
+      mysqli_stmt_execute($stmt);
+      $results = mysqli_stmt_get_result($stmt);
+
+      // redirect on success
+      if ($method == 'login') {
+        if (mysqli_num_rows($results) > 0) {
+          $current_user = mysqli_fetch_assoc($results);
+          $hash = $current_user['password_digest'];
+          $password = $_POST['password'];
+          if (password_verify($password, $hash)) {
+            // FIXME: set the session cookie or something smh
+            header('Location: /odix');
+          } else {
+            $errors['invalid'] = 'Invalid email/password';
+          }
+        } else {
+          $errors['invalid'] = 'Invalid email/password';
+        }
+      } else {
+        // sign up
+        $sql = mysqli_prepare($db_conn, 'INSERT INTO users (email, password_digest) VALUES (?, ?);');
+        $password = $_POST['password'];
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        mysqli_stmt_bind_param($sql, "ss", $_POST['email'], $hash);
+        $succes = mysqli_stmt_execute($sql);
+
+        if ($succes) {
+          header('Location: /odix/views/user/login.php');
+        }
+      }
+
+    } // isset
   }
 ?>
 
@@ -33,6 +76,8 @@
   <form class='col-6 border border-dark border-3 p-2'
     action=''
     method='POST'>
+
+    <span class='text-danger text-center'><?php echo $errors['invalid'] ?></span>
 
     <div class='form-group'>
       <label class='form-label' for='email'>Email</label>
