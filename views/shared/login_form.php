@@ -81,13 +81,13 @@
 
     <div class='form-group'>
       <label class='form-label' for='email'>Email</label>
-      <input class='form-control' type='email' name='email' placeholder='email' autofocus/>
+      <input class='form-control' type='email' name='email' placeholder='Email' autofocus/>
       <span class='text-danger'><?php echo $errors['email'] ?></span>
     </div>
 
     <div class='form-group'>
       <label class='form-label' for='password'> Password </label>
-      <input class='form-control' type='password' name='password' placeholder='email' />
+      <input class='form-control' type='password' name='password' placeholder='Password' />
       <span class='text-danger'><?php echo $errors['password'] ?></span>
     </div>
 
