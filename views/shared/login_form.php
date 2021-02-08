@@ -2,14 +2,28 @@
   $errors = ['email' => '', 'password' => ''];
 
   if (isset($_POST['submit'])) {
-    // ensure all fields aren't empty
-    foreach($errors as $field => $error) {
-      if (empty($_POST[$field])) {
-        $errors[$field] = "can't be blank";
+    // email field validation
+    if (empty($_POST['email'])) {
+      $errors['email'] = "can't be blank";
+    } else {
+      if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = 'must be a valid email address';
       }
     }
-    
-    // further validation here
+
+    if (empty($_POST['password'])) {
+      $errors['password'] = 'you must have a password!';
+    } else {
+      // FIXME: feel free to replace this with a regex or something better
+      if (strlen($_POST['password']) < 8) {
+        $errors['password'] = 'password must not be less than 8 characters';
+      }
+    }
+
+    // on success
+    if (!array_filter($errors)) {
+      header('Location: /odix');
+    }
 
   }
 ?>
