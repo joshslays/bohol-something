@@ -1,0 +1,9 @@
+input.form-control {
+  border-width: 2px;
+}
+
+input.form-control:focus {
+  /* removes default outline in bootsrap */
+  box-shadow: inset 0 0;
+  border: 2px solid #333;
+}
