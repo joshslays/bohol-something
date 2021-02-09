@@ -28,10 +28,10 @@
 
       if ($user_type !== 'admin') {
         // user login
-        $stmt = mysqli_prepare($db_conn, 'SELECT email, password_digest FROM users WHERE email = ? LIMIT 1;');
+        $stmt = mysqli_prepare($db_conn, 'SELECT id, password_digest FROM users WHERE email = ? LIMIT 1;');
       } else {
         // admin login
-        $stmt = mysqli_prepare($db_conn, 'SELECT email, password_digest FROM admins WHERE email = ? LIMIT 1;');
+        $stmt = mysqli_prepare($db_conn, 'SELECT id, password_digest FROM admins WHERE email = ? LIMIT 1;');
       }
 
       mysqli_stmt_bind_param($stmt, "s", $_POST['email']);
@@ -45,7 +45,7 @@
           $hash = $current_user['password_digest'];
           $password = $_POST['password'];
           if (password_verify($password, $hash)) {
-            // FIXME: set the session cookie or something smh
+            $_SESSION[$user_type . "_id"] = $current_user['id'];
             header('Location: /odix');
           } else {
             $errors['invalid'] = 'Invalid email/password';
@@ -55,19 +55,26 @@
         }
       } else {
         // sign up
-        $sql = mysqli_prepare($db_conn, 'INSERT INTO users (email, password_digest) VALUES (?, ?);');
+        $table_name = $user_type . "s";
+        $sql = mysqli_prepare($db_conn, "INSERT INTO $table_name (email, password_digest) VALUES (?, ?)");
         $password = $_POST['password'];
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
+        echo $table_name;
         mysqli_stmt_bind_param($sql, "ss", $_POST['email'], $hash);
         $succes = mysqli_stmt_execute($sql);
 
         if ($succes) {
           header('Location: /odix/views/user/login.php');
+        } else {
+          $errors['invalid'] = 'Email has already been taken';
         }
       }
 
-    } // isset
+    } // valid form
+  } else { // isset
+    require('../../actions/redirects.php');
+    redirectIfAuthenticated();
   }
 ?>
 
@@ -77,7 +84,9 @@
     action=''
     method='POST'>
 
-    <span class='text-danger text-center'><?php echo $errors['invalid'] ?></span>
+    <div class='text-center'>
+      <span class='text-danger'><?php echo $errors['invalid'] ?></span>
+    </div>
 
     <div class='form-group'>
       <label class='form-label' for='email'>Email</label>

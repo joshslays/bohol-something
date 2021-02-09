@@ -17,11 +17,30 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/odix">HOME</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/odix/views/user/login.php">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/odix/views/user/sign_up.php">Sign up</a>
-        </li>
+
+        <?php session_start(); ?>
+        <?php if (!(isset($_SESSION['user_id']) || isset($_SESSION['admin_id']))) { ?>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/odix/views/user/login.php">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/odix/views/user/sign_up.php">Sign up</a>
+          </li>
+        <?php } else { ?>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="/odix/actions/logout.php">Log out</a>
+          </li>
+        <?php } ?>
+
       </ul>
+    </section>
+
+    <section class='flash-messages text-center m-0'>
+      <?php
+        if (isset($_SESSION['flash'])) {
+          $flash_message = $_SESSION['flash'];
+          print "<p class='text-danger'> $flash_message </p>";
+          unset($_SESSION['flash']);
+        }
+      ?>
     </section>

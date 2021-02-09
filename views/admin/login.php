@@ -1,5 +1,4 @@
 <?php
-  $user_type = 'admin';
   include('../header.php');
 ?>
 
