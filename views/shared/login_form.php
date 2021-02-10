@@ -46,7 +46,7 @@
           $password = $_POST['password'];
           if (password_verify($password, $hash)) {
             $_SESSION[$user_type . "_id"] = $current_user['id'];
-            header('Location: /odix');
+            header('Location: /');
           } else {
             $errors['invalid'] = 'Invalid email/password';
           }
@@ -60,12 +60,11 @@
         $password = $_POST['password'];
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        echo $table_name;
         mysqli_stmt_bind_param($sql, "ss", $_POST['email'], $hash);
         $succes = mysqli_stmt_execute($sql);
 
         if ($succes) {
-          header('Location: /odix/views/user/login.php');
+          header('Location: /views/user/login.php');
         } else {
           $errors['invalid'] = 'Email has already been taken';
         }
