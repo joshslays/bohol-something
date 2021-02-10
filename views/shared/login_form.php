@@ -60,7 +60,6 @@
         $password = $_POST['password'];
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        echo $table_name;
         mysqli_stmt_bind_param($sql, "ss", $_POST['email'], $hash);
         $succes = mysqli_stmt_execute($sql);
 
