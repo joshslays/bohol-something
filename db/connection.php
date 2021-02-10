@@ -1,20 +1,23 @@
 <?php
 
-DB Params for production DB
-define('CERTIFICATE_AUTHORITY_FILE', SERVER_ROOT '/BaltimoreCyberTrustRoot.crt.pem');
+//DB Params for production DB
+define('SERVER_ROOT', preg_replace('|\\\|', '/', __DIR__));
+define('CERTIFICATE_AUTHORITY_FILE', SERVER_ROOT. '/BaltimoreCyberTrustRoot.crt.pem');
 define('DB_SERVER', 'cometobohol.mysql.database.azure.com');
 define('DB_USER', 'cashmoney@cometobohol');
 define('DB_PASS', 'Hokerzs26');
-define('DB_NAME', 'cometobohol');
+define('DB_NAME', 'odix');
 define('DB_PORT', 3306);
-ddefine('SERVER_ROOT', preg_replace('|\|', '/', DIR));
 
-$conn = mysqli_init();
-mysqli_ssl_set($conn, NULL,NULL, CERRTIFICATE_AUTHORITY_FILE, NULL, NULL);
-mysqli_real_connect($conn, DB_SERVER, DB_USER, DB_PASS, DB_NAME, DB_PORT, MYSQLI_CLIENT_SSL);
-if (mysqli_connect_errno($conn)) {
+
+$db_conn = mysqli_init();
+mysqli_ssl_set($db_conn, NULL,NULL, CERTIFICATE_AUTHORITY_FILE, NULL, NULL);
+mysqli_real_connect($db_conn, DB_SERVER, DB_USER, DB_PASS, DB_NAME, DB_PORT, MYSQLI_CLIENT_SSL);
+if (mysqli_connect_errno($db_conn)) {
   die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
+
+
 
 
 
