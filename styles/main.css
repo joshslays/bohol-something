@@ -1,3 +1,56 @@
+@import "bootstrap.css";
+
+@font-face {
+  font-family: main1Regular;
+  src: url(typefaces/SourceSansPro/SourceSansPro-Regular.ttf);
+}
+@font-face {
+  font-family: main1SemiBold;
+  src: url(typefaces/SourceSansPro/SourceSansPro-SemiBold.ttf);
+}
+@font-face {
+  font-family: main1Bold;
+  src: url(typefaces/SourceSansPro/SourceSansPro-Bold.ttf);
+}
+@font-face {
+  font-family: main1Black;
+  src: url(typefaces/SourceSansPro/SourceSansPro-Black.ttf);
+}
+
+.theme1 {
+  --manzoku-base: #81B29A;
+  --manzoku-primary: #3D405B;
+  --manzoku-secondary: #F2CC8F;
+
+  --manzoku-base-pos: #688d7b;
+  --manzoku-base-neg: #a9ddc4;
+  --manzoku-secondary-pos: #caab78;
+  --manzoku-secondary-neg: #f3ddba;
+
+
+  --manzoku-accent1: #E07A5F;
+  --manzoku-accent1-pos: #af5840;
+  --manzoku-accent1-neg: #f5b3a0;
+
+  --manzoku-accent2: #26c2c2;
+  --manzoku-accent2-pos: #0d6d6d;
+  --manzoku-accent2-neg: #67ffff;
+
+  --manzoku-contrast: #F4F1DE;
+  --manzoku-hard-contrast: #fff;
+  --manzoku-hard-contrast-negative: #000;
+}
+
+:root {
+  font-size: 16px;
+  font-family: main1Regular;
+}
+
+/* elements */
+  body{
+    background-color: var(--weatherapp-base);
+  }
+
 input.form-control {
   border-width: 2px;
 }
