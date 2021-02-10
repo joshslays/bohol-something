@@ -15,7 +15,10 @@
     <section class='d-flex'>
       <ul class="nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/">HOME</a>
+          <a class="nav-link" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/packages.php">Package</a>
         </li>
 
         <?php session_start(); ?>
