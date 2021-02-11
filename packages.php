@@ -14,7 +14,7 @@
   <?php if (mysqli_num_rows($results) != 0) { ?>
 
     <div class='mb-4 text-center'>
-        <?php if (!isUser()) { ?>
+        <?php if (!isLoggedIn()) { ?>
           <a class='text-white' href='/views/user/sign_up.php'>
             <h1 class='bg-dark m-auto p-3 rounded' style='width: max-content;'>
               Sign up to avail now!
@@ -44,9 +44,13 @@
             </a>
 
             <?php if (isAdmin()) { ?>
-              <section class='actions p-2'>
-                <button class='btn btn-sm btn-success'>edit</button>
-                <button class='btn btn-sm btn-danger'>delete</button>
+              <section class='actions p-2 d-flex'>
+                <button class='btn btn-sm btn-success mx-2'>edit</button>
+                <form action='/package/destroy.php' method='post'>
+                  <input type='hidden' name='method' value='delete' />
+                  <input type='hidden' name='package_id' value='<?php htmlspecialchars($package['id']) ?>' />
+                  <input class='btn btn-sm btn-danger' type='submit' name='submit' value='delete' />
+                </form>
               </section>
             <?php } ?>
 
