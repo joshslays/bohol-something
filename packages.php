@@ -42,18 +42,7 @@
                 </p>
               </div>
             </a>
-
-            <?php if (isAdmin()) { ?>
-              <section class='actions p-2 d-flex'>
-                <button class='btn btn-sm btn-success mx-2'>edit</button>
-                <form action='/package/destroy.php' method='post'>
-                  <input type='hidden' name='method' value='delete' />
-                  <input type='hidden' name='package_id' value='<?php echo htmlspecialchars($package['id']) ?>' />
-                  <input class='btn btn-sm btn-danger' type='submit' name='submit' value='delete' />
-                </form>
-              </section>
-            <?php } ?>
-
+            <?php include('./package/actions.php'); ?>
           </div> <!-- card -->
         </div> <!-- col -->
       <?php } ?>
