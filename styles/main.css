@@ -152,3 +152,24 @@ input.form-control:focus {
   box-shadow: inset 0 0;
   border: 2px solid #333;
 }
+
+@keyframes fade {
+  0% {
+    color: white;
+    background: black;
+    margin-top: 20px;
+    opacity: 1;
+  }
+  100% {
+  }
+}
+
+.flash-message {
+  animation: 3s fade;
+  opacity: 0;
+  width: max-content;
+  margin: auto;
+  font-weight: bolder;
+  color: white;
+  padding: 10px;
+}

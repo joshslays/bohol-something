@@ -46,7 +46,7 @@
       <?php
       if (isset($_SESSION['flash'])) {
         $flash_message = $_SESSION['flash'];
-        print "<p class='text-danger'> $flash_message </p>";
+        print "<p class='flash-message'> $flash_message </p>";
         unset($_SESSION['flash']);
       }
       ?>
