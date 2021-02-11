@@ -1,3 +1,148 @@
+/* @import "bootstrap.css"; */
+
+@font-face {
+  font-family: main1Regular;
+  src: url(typefaces/SourceSansPro/SourceSansPro-Regular.ttf);
+}
+@font-face {
+  font-family: main1SemiBold;
+  src: url(typefaces/SourceSansPro/SourceSansPro-SemiBold.ttf);
+}
+@font-face {
+  font-family: main1Bold;
+  src: url(typefaces/SourceSansPro/SourceSansPro-Bold.ttf);
+}
+@font-face {
+  font-family: main1Black;
+  src: url(typefaces/SourceSansPro/SourceSansPro-Black.ttf);
+}
+
+.theme1 {
+  --odix-base: #81B29A;
+  --odix-primary: #3D405B;
+  --odix-secondary: #F2CC8F;
+
+  --odix-base-pos: #688d7b;
+  --odix-base-neg: #a9ddc4;
+  --odix-secondary-pos: #caab78;
+  --odix-secondary-neg: #f3ddba;
+
+
+  --odix-accent1: #E07A5F;
+  --odix-accent1-pos: #af5840;
+  --odix-accent1-neg: #f5b3a0;
+
+  --odix-accent2: #26c2c2;
+  --odix-accent2-pos: #0d6d6d;
+  --odix-accent2-neg: #67ffff;
+
+  --odix-contrast: #F4F1DE;
+  --odix-hard-contrast: #fff;
+  --odix-hard-contrast-negative: #000;
+}
+
+:root {
+  font-size: 16px;
+  font-family: main1Regular;
+}
+
+/* elements */
+  body{
+    background-color: var(--odix-hard-contrast) !important;
+  }
+  ::selection {
+    background-color: var(--odix-base) !important;
+    color: var(--odix-primary) !important;
+  }
+/* typography */
+  .odix-typeface-main0{
+    font-family: main0;
+  }
+  .odix-regular{
+    font-family: main1Regular;
+  }
+  .odix-semibold{
+    font-family: main1SemiBold;
+  }
+  .odix-bold{
+    font-family: main1Bold;
+  }
+  .odix-black{
+    font-family: main1Black;
+  }
+
+  .odix-font-1{font-size: 1rem;}
+  .odix-font-2{font-size: 1.4rem;}
+  .odix-font-3{font-size: 1.8rem;}
+  .odix-font-4{font-size: 2.2rem;}
+  .odix-font-5{font-size: 2.6rem;}
+  .odix-font-6{font-size: 3rem;}
+  .odix-font-7{font-size: 4.4rem;}
+  .odix-font-8{font-size: 4.8rem;}
+
+/* text colors */
+  .odix-color-base{
+    color: var(--odix-base);
+  }
+  .odix-color-primary{
+    color: var(--odix-primary);
+  }
+  .odix-color-secondary{
+    color: var(--odix-secondary);
+  }
+  .odix-color-accent1{
+    color: var(--odix-accent1);
+  }
+  .odix-color-accent1-neg{
+    color: var(--odix-accent1-neg);
+  }
+  .odix-color-accent2{
+    color: var(--odix-accent2);
+  }
+  .odix-color-contrast{
+    color: var(--odix-contrast);
+  }
+
+/* backgrounds */
+  .odix-bg-base{
+    background-color: var(--odix-base);
+  }
+  .odix-bg-primary{
+    background-color: var(--odix-primary);
+  }
+  .odix-bg-secondary{
+    background-color: var(--odix-secondary);
+  }
+  .odix-bg-accent1{
+    background-color: var(--odix-accent1);
+  }
+  .odix-bg-accent1-pos{
+    background-color: var(--odix-accent1-pos);
+  }
+  .odix-bg-accent2{
+    background-color: var(--odix-accent2);
+  }
+  .odix-bg-contrast{
+    background-color: var(--odix-contrast);
+  }
+  .odix-bg-gradient-1{
+    background-image: linear-gradient(to right, var(--odix-primary), var(--odix-secondary));
+  }
+  .odix-bg-gradient-2{
+    background-image: linear-gradient(360deg, var(--odix-base), var(--odix-accent1));
+  }
+  .odix-svg-bg-1{
+    background-color: #ce9909;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23fe6c2b' stroke-width='0' stroke-opacity='0.43' %3E%3Ccircle fill='%23ce9909' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23c38908' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23b87907' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23ad6b06' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23a25d05' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23975005' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%238c4404' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23813903' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23762f03' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%236a2602' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%235f1e02' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23541701' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23481001' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%233d0b01' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23310700' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23250300' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%231a0100' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%230e0000' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  .odix-bg-primary-tint{
+    background-color: var(--odix-primary);
+    opacity: 0.6;
+  }
+
+
 input.form-control {
   border-width: 2px;
 }
