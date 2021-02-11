@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Come to Bohol</title>
   <link href="/styles/main.css" rel="stylesheet" />
   <script defer src="main.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -17,13 +17,13 @@
 
   <header class='odix-color-base odix-bg-base p-2'>
     <section class="container navbar">
-      <a class="navbar-brand " href="/">Odicta Gang</a>
+      <a class="navbar-brand " href="/"></a>
       <ul class="nav">
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="packages.php">Package</a>
+          <a class="nav-link" aria-current="page" href="/packages.php">Package</a>
         </li>
         <?php if (!(isset($_SESSION['user_id']) || isset($_SESSION['admin_id']))) { ?>
           <li class="nav-item">
