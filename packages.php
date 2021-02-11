@@ -48,7 +48,7 @@
                 <button class='btn btn-sm btn-success mx-2'>edit</button>
                 <form action='/package/destroy.php' method='post'>
                   <input type='hidden' name='method' value='delete' />
-                  <input type='hidden' name='package_id' value='<?php htmlspecialchars($package['id']) ?>' />
+                  <input type='hidden' name='package_id' value='<?php echo htmlspecialchars($package['id']) ?>' />
                   <input class='btn btn-sm btn-danger' type='submit' name='submit' value='delete' />
                 </form>
               </section>
