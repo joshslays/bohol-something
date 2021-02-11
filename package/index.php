@@ -5,6 +5,7 @@
 <main class='mt-4'>
   <?php
     include('../db/connection.php');
+    include('../actions/helpers.php');
     $package_id = (int) htmlspecialchars($_GET['package']);
 
     $package_query = mysqli_prepare($db_conn, 'SELECT * FROM packages where id = ? LIMIT 1');
@@ -20,9 +21,12 @@
       $activities = mysqli_stmt_get_result($activities_query);
     }
   ?>
-  
+  <div class='m-auto text-center p-2 mb-2' style='width: max-content;'>
+    <a class='text-warning fw-bolder fs-3' href='/packages.php'> back to packages </a>
+  </div>
+
   <?php if ($package) { ?>
-    <div class="card shadow bg-light rounded col-6 mx-auto">
+    <div class="card shadow bg-light rounded col-8 mx-auto">
       <div class="card-body">
         <h5 class="card-title">
           <?php echo htmlspecialchars($package['name']); ?>
@@ -49,7 +53,9 @@
         </p>
 
       </div>
+      <?php include('./actions.php'); ?>
     </div>
+
 
   <?php } else { ?>
     <h1 class='text-center'> The package does not exist :( </h1>
