@@ -12,9 +12,20 @@
   ?>
 
   <?php if (mysqli_num_rows($results) != 0) { ?>
-    <div class='row m-auto w-75 p-4'>
+
+    <div class='mb-4 text-center'>
+        <?php if (!isUser()) { ?>
+          <a class='text-white' href='/views/user/sign_up.php'>
+            <h1 class='bg-dark m-auto p-3 rounded' style='width: max-content;'>
+              Sign up to avail now!
+            </h1>
+          </a>
+        <?php } ?>
+    </div>
+
+    <div class='row mx-auto w-100 p-4'>
       <?php foreach($results as $package) { ?>
-        <div class='col-4 mb-4'>
+        <div class='col-md-4 mb-4'>
           <div class="card shadow bg-light rounded">
             <a class="text-decoration-none text-dark"
               href="/package/index.php?package=<?php echo htmlspecialchars($package['id']); ?>">
